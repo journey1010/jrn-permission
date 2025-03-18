@@ -7,5 +7,7 @@
             "name": "Journii"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=8.1"
+    }
 }
