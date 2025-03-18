@@ -1,0 +1,14 @@
+build/
+cache/
+
+/vendor
+/composer.lock
+/.vscode
+.env.*.php
+.env.php
+/.settings
+.idea
+/bootstrap/compiled.php
+composer.phar
+.DS_Store
+Thumbs.db
