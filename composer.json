@@ -1,0 +1,11 @@
+{
+    "name": "journii/jrn-permission",
+    "description": "jrn-permission is an authorization library for php. It provides standard role based access control",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Journii"
+        }
+    ],
+    "require": {}
+}
