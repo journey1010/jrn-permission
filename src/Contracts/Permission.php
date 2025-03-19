@@ -7,8 +7,10 @@ use Illuminate\Support\Collection;
 interface Permission {
     /**
      * retrive roles linked to permissions
+     * @throws \Jrn\Rbac\Exceptions\PermissionDoesNotExist
+     * 
      */
-    public static function roles(): Collection;
+    public static function roles(int|string $permission): Collection;
 
     /**
      * @throws \Jrn\Rbac\Exceptions\PermissionDoesNotExist

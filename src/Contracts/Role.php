@@ -7,8 +7,9 @@ use Illuminate\Support\Collection;
 interface Role {
     /**
      * retrive permissions linked to roles
+     * @throws \Jrn\Rbac\Exceptions\RoleDoesNotExist
      */
-    public function permission(): collection; 
+    public function permission(string|int $role): collection; 
     
     /**
      * Find role by its name or primary key id
