@@ -11,21 +11,16 @@ class Role implements RoleContract{
 
     protected static $table; 
     
+    public static function __constructStatic()
+    {
+        // ...
+    }
+    
     private static function init(): void
     {
         if(!isset(static::$table)){
             static::$table = Config('jrnRbac.tables.roles');
         }
-    }
-
-    public static function permission(string|int $role): Collection
-    {static::init();
-        return new Collection(); 
-    }
-
-    public static function find(string|int $role): int
-    {static::init();
-        return 1; 
     }
 
     public static function findOrCreate(string $name): int
@@ -37,4 +32,16 @@ class Role implements RoleContract{
         }
         return 1; 
     } 
+
+    public static function permission(string|int $role): Collection
+    {static::init();
+        return new Collection(); 
+    }
+
+    public static function find(string|int $role): int
+    {static::init();
+        return 1; 
+    }
+
+
 }
