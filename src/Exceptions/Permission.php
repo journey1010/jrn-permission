@@ -8,7 +8,7 @@ class Permission extends InvalidArgumentException
 {
     public static function create(string $name)
     {
-        return new static("This permission alread");
+        return new static("This permission alread `{$name}`");
     }
     
     public static function name(string $roleName)

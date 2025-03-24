@@ -21,5 +21,5 @@ interface Permission {
     /**
      * Find or Create permission by its name
     */
-    public static function findOrCreate(string $name): int;
+    public static function create(string $name, string $display, string $description): int;
 }
