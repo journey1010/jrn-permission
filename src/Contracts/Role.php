@@ -19,7 +19,7 @@ interface Role {
     public static function find(string|int $role): int;
     
     /**
-     * Find or create role
+     * Create role
      */
-    public static function findOrCreate(string $name): int; 
+    public static function create(string $name, string $dislay, string $description): int; 
 }

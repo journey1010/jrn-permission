@@ -5,43 +5,29 @@ namespace Jrn\Rbac\Trait;
 use Illuminate\Support\Collection;
 use Jrn\Rbac\Contracts\Role as RoleContract;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Config;
+use Jrn\Rbac\Rbac\Init;
+use Jrn\Rbac\Exceptions\RoleExists;
 
-class Role implements RoleContract{
+class Role extends Init implements RoleContract{
 
     protected static $table; 
-    
-    public static function __constructStatic()
-    {
-        // ...
-    }
-    
-    private static function init(): void
-    {
-        if(!isset(static::$table)){
-            static::$table = Config('jrnRbac.tables.roles');
-        }
-    }
-
-    public static function findOrCreate(string $name): int
+        
+    public static function create(string $name, string $display, string $description): int
     { 
-        static::init();
-        $role = DB::table(static::$table)->where('name', str_replace(' ', '', strtolower($name)))->first();
-        if(is_null($role)){
-            
-        }
-        return 1; 
+        return DB::table(static::_table())->insertGetId([
+                'name' => $name,
+                'display_name' => $display,
+                'description' => $description
+            ]);
     } 
 
     public static function permission(string|int $role): Collection
-    {static::init();
+    {
         return new Collection(); 
     }
 
     public static function find(string|int $role): int
-    {static::init();
+    {
         return 1; 
     }
-
-
 }
