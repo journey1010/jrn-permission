@@ -27,17 +27,36 @@ class Role extends Init implements RoleContract{
         ]);
     } 
 
+    /**
+     * Get permissions for a role (by ID or name)
+     *
+     * @param string|int $role
+     * @return Collection
+     */
     public static function permission(string|int $role): Collection
     {
-        $query = DB::table(static::$permisionRoleTable)
-            ->join(static::$permissionTable, static::$permissionTable. '.id', static::$permisionRoleTable . '.permision_id');
-        if(!is_integer($role)){
-            $query->join(static::$table, static::$table . '.id', static::$permisionRoleTable . '.role_id')
-            ->where(static::$table . '.name', $role);
-        }
-        return $query->where(static::$permisionRoleTable . '.role_id', $role)->get();
-    }
+        $query = DB::table(static::$permissionRoleTable)
+            ->join(
+                static::$permissionTable,
+                static::$permissionTable.'.id',
+                '=',
+                static::$permissionRoleTable.'.permission_id'
+            );
 
+        if (is_string($role)) {
+            $query->join(
+                    static::_table(),
+                    static::_table().'.id',
+                    '=',
+                    static::$permissionRoleTable.'.role_id'
+                )
+                ->where(static::_table().'.name', $role);
+        } else {
+            $query->where(static::$permissionRoleTable.'.role_id', $role);
+        }
+
+        return $query->get();
+    }
 
     public static function find(string|int $role): int
     {

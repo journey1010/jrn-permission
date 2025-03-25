@@ -12,3 +12,5 @@ cache/
 composer.phar
 .DS_Store
 Thumbs.db
+/workbench
+testbench.yaml

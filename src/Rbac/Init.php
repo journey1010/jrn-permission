@@ -18,7 +18,7 @@ class Init {
     
     protected static ?string $roleTable = null;
     
-    protected static ?string $permisionRoleTable = null;
+    protected static ?string $permissionRoleTable = null;
     
     protected static ?string $roleUser = null;
 
@@ -43,8 +43,8 @@ class Init {
 
     protected static function _forRole(): void
     {
-        if(static::$permisionRoleTable === null){
-            static::$permisionRoleTable = config('jrnRbac.table.permission_role');
+        if(static::$permissionRoleTable === null){
+            static::$permissionRoleTable = config('jrnRbac.table.permission_role');
         }   
 
         if(static::$permissionTable === null){
