@@ -7,21 +7,10 @@ use Jrn\Rbac\Contracts\Role as RoleContract;
 use Illuminate\Support\Facades\DB;
 use Jrn\Rbac\Rbac\Init;
 use Jrn\Rbac\Exceptions\RoleExists;
-use PhpParser\Node\Expr\FuncCall;
 
 class Role extends Init implements RoleContract{
-    
-    protected static $roleAs = 'rls';
-    protected static $permissionAs = 'prms';
-    protected static $permissionRoleAs = 'prmsr';
-    protected static $relationships = [
-        'user' => 'role_user',
-        'permission' => 'permission_role'
-    ];
-    protected static $foreginKey = 'role_id';
 
-    protected static $permissionTable = 'permission';
-    protected static $permissionTableForeign = 'permission_id';
+    protected static $configkey = 'roles';
 
     public static function create(string $name, string $display, string $description): int
     { 
@@ -40,15 +29,18 @@ class Role extends Init implements RoleContract{
 
     public static function permission(string|int $role): Collection
     {
-        DB::table(static::$relationships['permission'])
-            ->join(static::, static::$permissionRoleAs . '.'. static::$foreginKey , static::$roleAs . '.id')
-            ->join(static::_permissionAs(), static::$permissionAs . '.id', static::)
-            ->get();
+        $query = DB::table(static::$permisionRoleTable)
+            ->join(static::$permissionTable, static::$permissionTable. '.id', static::$permisionRoleTable . '.permision_id');
+        if(!is_integer($role)){
+            $query->join(static::$table, static::$table . '.id', static::$permisionRoleTable . '.role_id')
+            ->where(static::$table . '.name', $role);
+        }
+        return $query->where(static::$permisionRoleTable . '.role_id', $role)->get();
     }
 
 
     public static function find(string|int $role): int
     {
-        return 1; 
+        return 1;
     }
 }
