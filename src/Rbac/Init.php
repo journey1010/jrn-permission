@@ -6,23 +6,23 @@ use InvalidArgumentException;
 
 class Init {
 
-    protected static bool $initialized = false; 
+    public static bool $initialized = false; 
 
-    protected static ?string $table = null;
+    public static ?string $table = null;
 
-    protected static $configkey;
+    public static $configkey;
 
-    protected static $tables ;
+    public static $tables ;
 
-    protected static ?string $permissionTable = null;
+    public static ?string $permissionTable = null;
     
-    protected static ?string $roleTable = null;
+    public static ?string $roleTable = null;
     
-    protected static ?string $permissionRoleTable = null;
+    public static ?string $permissionRoleTable = null;
     
-    protected static ?string $roleUser = null;
+    public static ?string $roleUser = null;
 
-    protected static function ensureInit(): void
+    public static function ensureInit(): void
     {
         if(static::$initialized === false){
             if(static::$table === null){
@@ -35,13 +35,13 @@ class Init {
         }
     }
 
-    protected static function _table(): string
+    public static function _table(): string
     {
         static::ensureInit();
         return static::$table;
     }
 
-    protected static function _forRole(): void
+    public static function _forRole(): void
     {
         if(static::$permissionRoleTable === null){
             static::$permissionRoleTable = config('jrnRbac.table.permission_role');

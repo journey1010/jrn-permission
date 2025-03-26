@@ -1,11 +1,10 @@
 <?php 
     
-namespace Jrn\Rbac\Trait;
+namespace Jrn\Rbac\Rbac;
 
 use Illuminate\Support\Collection;
 use Jrn\Rbac\Contracts\Role as RoleContract;
 use Illuminate\Support\Facades\DB;
-use Jrn\Rbac\Rbac\Init;
 use Jrn\Rbac\Exceptions\RoleExists;
 
 class Role extends Init implements RoleContract{
