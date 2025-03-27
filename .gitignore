@@ -14,3 +14,5 @@ composer.phar
 Thumbs.db
 /workbench
 testbench.yaml
+phpunit.xml
+.phpunit.result.cache

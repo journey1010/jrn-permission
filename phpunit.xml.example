@@ -24,7 +24,7 @@
         <env name="DB_HOST" value="127.0.0.1"/>
         <env name="DB_PORT" value="3306"/>
         <env name="DB_DATABASE" value="jrn-permission"/>
-        <env name="DB_USERNAME" value="gorel"/>
+        <env name="DB_USERNAME" value="journii"/>
         <env name="DB_PASSWORD" value=""/>
 
         <env name="MAIL_MAILER" value="array"/>
